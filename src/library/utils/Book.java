@@ -42,6 +42,8 @@ public class Book implements Savable {
     }
 
     public void setQuantity(int quantity) {
+        if(quantity < 0) quantity = 0;
+
         this.quantity = quantity;
     }
 
@@ -66,6 +68,21 @@ public class Book implements Savable {
         setAuthorName(authorName);
         setPublisherName(publisherName);
         setQuantity(quantity);
+    }
+
+    public boolean isOutOfStock()
+    {
+        return getQuantity() == 0;
+    }
+
+    public void decrement()
+    {
+        setQuantity(getQuantity() - 1);
+    }
+
+    public void increment()
+    {
+        setQuantity(getQuantity() + 1);
     }
 
     public String lineRepresentation() {

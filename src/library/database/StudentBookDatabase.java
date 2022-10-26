@@ -2,8 +2,8 @@ package library.database;
 
 import library.utils.StudentBook;
 
-public class StudentBookFileDatabase extends FileDatabase {
-    public StudentBookFileDatabase(String filename) {
+public class StudentBookDatabase extends FileDatabase {
+    public StudentBookDatabase(String filename) {
         super(filename);
     }
 

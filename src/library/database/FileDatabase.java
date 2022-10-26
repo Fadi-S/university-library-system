@@ -9,10 +9,14 @@ public abstract class FileDatabase implements Database {
     private final String filname;
     private ArrayList<Savable> records;
 
+    public static final String path = "files/";
+
     public FileDatabase(String filename) {
-        this.filname = filename;
+        this.filname = path + filename;
 
         records = new ArrayList<>();
+
+        readFromFile();
     }
 
     abstract public Savable createRecordFrom(String line);
@@ -29,6 +33,8 @@ public abstract class FileDatabase implements Database {
         while (scanner.hasNextLine()) {
             records.add(createRecordFrom(scanner.nextLine()));
         }
+
+        scanner.close();
     }
 
     @Override
@@ -44,7 +50,7 @@ public abstract class FileDatabase implements Database {
     @Override
     public Savable getRecord(String key) {
         Optional<Savable> optionalSavable = records.stream().filter(
-                (Savable savable) -> savable.getSearchKey().equalsIgnoreCase(key)
+                (savable) -> savable.getSearchKey().equalsIgnoreCase(key)
         ).findFirst();
 
         return optionalSavable.orElse(null);
@@ -52,7 +58,17 @@ public abstract class FileDatabase implements Database {
 
     @Override
     public void insertRecord(Savable record) {
+        deleteRecord(record.getSearchKey());
+
         records.add(record);
+    }
+
+    public void addRecordToFile(Savable record) {
+        insertRecord(record);
+
+        saveToFile();
+
+        readFromFile();
     }
 
     @Override
@@ -79,6 +95,8 @@ public abstract class FileDatabase implements Database {
     {
         try {
             File file = new File(this.filname);
+
+            file.getParentFile().mkdirs();
 
             file.createNewFile();
 

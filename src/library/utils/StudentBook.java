@@ -15,7 +15,7 @@ public class StudentBook implements Savable {
         this.studentId = studentId;
     }
 
-    public String studentId;
+    private String studentId;
 
     public String getBookId() {
         return bookId;
@@ -25,7 +25,7 @@ public class StudentBook implements Savable {
         this.bookId = bookId;
     }
 
-    public String bookId;
+    private String bookId;
 
     public LocalDate getBorrowDate() {
         return borrowDate;
@@ -35,7 +35,7 @@ public class StudentBook implements Savable {
         this.borrowDate = borrowDate;
     }
 
-    public LocalDate borrowDate;
+    private LocalDate borrowDate;
 
     public StudentBook(String studentId, String bookId, LocalDate borrowDate) {
         this.setStudentId(studentId);

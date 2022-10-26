@@ -52,6 +52,4 @@ public abstract class User implements Savable {
     public String serialize() {
         return this.getId() + "," + this.getName() + "," + this.getEmail() + "," + this.getAddress() + "," + this.getPhoneNumber();
     }
-
-    abstract public boolean isAdmin();
 }
