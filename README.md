@@ -4,4 +4,4 @@ This a library system created as an assignment to show that we understand the ba
 
 That includes Inhertitance, Interfaces and SOLID principles.
 
-***This project is not a real world application, just an assignment in our university***
+***This project is not a real world application, just an assignment for our university***
