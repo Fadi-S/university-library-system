@@ -78,12 +78,12 @@ public class LibrarianRole {
 
     public StudentBook[] getListOfBorrowingOperations()
     {
-        return (StudentBook[]) sBDatabase.returnAllRecords().toArray();
+        return sBDatabase.returnAllRecords().toArray(new StudentBook[0]);
     }
 
     public Book[] getListOfBooks()
     {
-        return (Book[]) booksDatabase.returnAllRecords().toArray();
+        return booksDatabase.returnAllRecords().toArray(new Book[0]);
     }
 
     public void logout()

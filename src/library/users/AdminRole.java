@@ -2,8 +2,6 @@ package library.users;
 
 import library.database.LibrarianUserDatabase;
 
-import java.sql.Array;
-
 public class AdminRole {
 
     private LibrarianUserDatabase database;
@@ -25,7 +23,7 @@ public class AdminRole {
 
     public LibrarianUser[] getListOfLibrarians()
     {
-        return (LibrarianUser[]) database.returnAllRecords().toArray();
+        return database.returnAllRecords().toArray(new LibrarianUser[0]);
     }
 
     public void logout() {

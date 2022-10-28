@@ -14,8 +14,6 @@ public abstract class FileDatabase implements Database {
     public FileDatabase(String filename) {
         this.filname = path + filename;
 
-        records = new ArrayList<>();
-
         readFromFile();
     }
 
@@ -52,7 +50,7 @@ public abstract class FileDatabase implements Database {
     @Override
     public Savable getRecord(String key) {
         Optional<Savable> optionalSavable = records.stream().filter(
-                (savable) -> savable.getSearchKey().equalsIgnoreCase(key)
+                savable -> savable.getSearchKey().equalsIgnoreCase(key)
         ).findFirst();
 
         return optionalSavable.orElse(null);
