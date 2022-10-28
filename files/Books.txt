@@ -1,0 +1,6 @@
+B101,Code Complete,Steve McConnell,Test 2,7
+B150,Code: The Hidden Language of Computer Hardware and Software,Charles Petzold,Test 3,3
+B155,SOLID principles,Fadi Sarwat,Test 3,3
+B700,Easter Eggs are funny,Fadi Sarwat,Test 2,6
+B704,Book of laravel,Taylor Otwell,Test 2,6
+B100,Clean Code,Robert Cecil Martin,Test,4

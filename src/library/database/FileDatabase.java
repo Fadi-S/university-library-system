@@ -23,6 +23,8 @@ public abstract class FileDatabase implements Database {
 
     @Override
     public void readFromFile() {
+        records = new ArrayList<>();
+
         Scanner scanner;
         try {
             scanner = new Scanner(getFile());
@@ -85,6 +87,7 @@ public abstract class FileDatabase implements Database {
                 writer.newLine();
             }
 
+            writer.flush();
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);

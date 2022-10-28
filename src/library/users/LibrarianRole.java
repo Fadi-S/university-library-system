@@ -27,7 +27,7 @@ public class LibrarianRole {
         Book book = (Book) booksDatabase.getRecord(bookId);
         StudentBook studentBook = new StudentBook(studentId, bookId, borrowDate);
 
-        if(book.isOutOfStock()) {
+        if(book == null || book.isOutOfStock()) {
             return 0;
         }
 

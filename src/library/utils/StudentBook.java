@@ -2,8 +2,8 @@ package library.utils;
 
 import library.database.Savable;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class StudentBook implements Savable {
 
@@ -54,16 +54,14 @@ public class StudentBook implements Savable {
     }
 
     public String lineRepresentation() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-
-        return getStudentId() + "," + getBookId() + "," + formatter.format(getBorrowDate());
+        return getStudentId() + "," + getBookId() + "," + getBorrowDate().format(DateTimeFormatter.ISO_DATE);
     }
 
     public static StudentBook deserialize(String line)
     {
         String[] data = line.split(",");
 
-        LocalDate date = LocalDate.parse(data[20]);
+        LocalDate date = LocalDate.parse(data[2]);
 
         return new StudentBook(data[0], data[1], date);
     }
