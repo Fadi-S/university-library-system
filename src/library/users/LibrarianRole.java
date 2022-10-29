@@ -46,7 +46,7 @@ public class LibrarianRole {
 
     public double returnBook(String studentId, String bookId, LocalDate returnDate)
     {
-        StudentBook studentBook = new StudentBook(studentId, bookId, returnDate);
+        StudentBook studentBook = new StudentBook(studentId, bookId, null);
 
         studentBook = (StudentBook) sBDatabase.getRecord(studentBook.getSearchKey());
         if(studentBook == null) {

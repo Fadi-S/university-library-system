@@ -53,6 +53,11 @@ public class LibrarianUser implements Savable {
         return this.getId() + "," + this.getName() + "," + this.getEmail() + "," + this.getAddress() + "," + this.getPhoneNumber();
     }
 
+    public void print()
+    {
+        System.out.println(serialize());
+    }
+
     public static LibrarianUser deserialize(String line)
     {
         String[] data = line.split(",");
