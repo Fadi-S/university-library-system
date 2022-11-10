@@ -1,43 +1,38 @@
 package frontend;
 
+import frontend.auth.AdminLogin;
+import frontend.auth.LibrarianLogin;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LibrarySystemWindow extends JFrame implements Node {
-    private JPanel panel1;
+    private JPanel mainPanel;
     private JButton adminRoleButton;
     private JButton librarianRoleButton;
 
-    private LibrarySystemWindow(){
-    setContentPane(panel1);
-    setTitle("Library system");
-    setSize(450,300);
-    setVisible(true);
+    public LibrarySystemWindow() {
+        super("Library System");
 
-        adminRoleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                AdminLogin adminLogin=new AdminLogin();
-                adminLogin.setParentNode(getParentNode());
-
-
-            }
+        adminRoleButton.addActionListener(e -> {
+            setVisible(false);
+            AdminLogin adminLogin = new AdminLogin();
+            adminLogin.setParentNode(getParentNode());
         });
-        librarianRoleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                LibrarianLogin librarianLogin=new LibrarianLogin();
-                librarianLogin.setParentNode(getParentNode());
 
-
-            }
+        librarianRoleButton.addActionListener(e -> {
+            setVisible(false);
+            LibrarianLogin librarianLogin = new LibrarianLogin();
+            librarianLogin.setParentNode(getParentNode());
         });
     }
-    public static void main(String[] args) {
-        LibrarySystemWindow librarySystemWindow=new LibrarySystemWindow();
+
+    public void render()
+    {
+        setContentPane(mainPanel);
+        setTitle("Library system");
+        setSize(450, 300);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     @Override
