@@ -1,6 +1,6 @@
 # Library System
 
-This a library system created as an assignment to show that we understand the basics of Java and OOP programming.
+This a backend.library system created as an assignment to show that we understand the basics of Java and OOP programming.
 
 That includes Inhertitance, Interfaces and SOLID principles.
 

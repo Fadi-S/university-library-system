@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import library.users.AdminRole;
-import library.users.LibrarianUser;
+import backend.library.users.AdminRole;
+import backend.library.users.LibrarianUser;
 
 /**
  *

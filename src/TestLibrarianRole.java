@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import library.users.LibrarianRole;
-import library.utils.Book;
-import library.utils.StudentBook;
+import backend.library.users.LibrarianRole;
+import backend.library.utils.Book;
+import backend.library.utils.StudentBook;
 
 import java.time.LocalDate;
 

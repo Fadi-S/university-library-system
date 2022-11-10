@@ -1,6 +1,6 @@
-import library.users.AdminRole;
-import library.users.LibrarianRole;
-import library.users.LibrarianUser;
+import backend.library.users.AdminRole;
+import backend.library.users.LibrarianRole;
+import backend.library.users.LibrarianUser;
 
 import java.time.LocalDate;
 
