@@ -23,7 +23,8 @@ public class AdminRole {
 
     public LibrarianUser[] getListOfLibrarians()
     {
-        return database.returnAllRecords().toArray(new LibrarianUser[0]);
+        if(database.returnAllRecords()!= null) return (LibrarianUser[])database.returnAllRecords().toArray();
+        return null;
     }
 
     public void logout() {
