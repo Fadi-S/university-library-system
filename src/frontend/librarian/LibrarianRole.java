@@ -1,9 +1,10 @@
 package frontend.librarian;
 
-import frontend.Navigator;
+import frontend.utils.Navigator;
 import frontend.Page;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.event.ActionEvent;
 
 public class LibrarianRole implements Page {
@@ -20,38 +21,29 @@ public class LibrarianRole implements Page {
         frame = new JFrame("Librarian Role");
         frame.setContentPane(panel);
 
-        addBookButton.addActionListener(this::addBook);
-        viewBooksButton.addActionListener(this::viewBooks);
-        borrowBookButton.addActionListener(this::borrowBook);
-        viewBorrowedBooksButton.addActionListener(this::viewBorrowedBooks);
-        returnBookButton.addActionListener(this::returnBook);
+        addBookButton.addActionListener((e) -> Navigator.goTo(null));
+        addBookButton.setUI(new BasicButtonUI());
+
+        viewBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBooks()));
+        viewBooksButton.setUI(new BasicButtonUI());
+
+        borrowBookButton.addActionListener((e) -> Navigator.goTo(null));
+        borrowBookButton.setUI(new BasicButtonUI());
+
+        viewBorrowedBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBorrowedBooks()));
+        viewBorrowedBooksButton.setUI(new BasicButtonUI());
+
+        returnBookButton.addActionListener((e) -> Navigator.goTo(null));
+        returnBookButton.setUI(new BasicButtonUI());
+
         logoutButton.addActionListener(this::logout);
-    }
-
-    private void addBook(ActionEvent e) {
-
-    }
-
-    private void viewBooks(ActionEvent e) {
-        Navigator.goTo(new ViewBooks());
-    }
-
-    private void borrowBook(ActionEvent e) {
-
-    }
-
-    private void viewBorrowedBooks(ActionEvent e) {
-        Navigator.goTo(new ViewBorrowedBooks());
-    }
-
-    private void returnBook(ActionEvent e) {
-
+        logoutButton.setUI(new BasicButtonUI());
     }
 
     private void logout(ActionEvent e) {
         // TODO Save data
 
-        Navigator.exit();
+        Navigator.back();
     }
 
     @Override

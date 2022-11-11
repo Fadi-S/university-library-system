@@ -1,6 +1,6 @@
 package frontend.auth;
 
-import frontend.Navigator;
+import frontend.utils.Navigator;
 import frontend.Page;
 
 import javax.swing.*;

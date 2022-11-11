@@ -1,4 +1,6 @@
-package frontend;
+package frontend.utils;
+
+import frontend.Page;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -42,8 +44,7 @@ public class Navigator {
 
         JFrame frame = page.getFrame();
 
-        if(page.closable())
-            frame.dispose();
+        frame.dispose();
 
         if(! pages.isEmpty()) {
             Page parentPage = pages.peek();

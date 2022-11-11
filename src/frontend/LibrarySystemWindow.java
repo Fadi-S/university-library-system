@@ -2,6 +2,7 @@ package frontend;
 
 import frontend.auth.AdminLogin;
 import frontend.auth.LibrarianLogin;
+import frontend.utils.Navigator;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;

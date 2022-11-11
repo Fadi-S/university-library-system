@@ -3,57 +3,81 @@
   <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="20">
     <margin top="20" left="20" bottom="20" right="20"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="500" height="744"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="4c40a" class="javax.swing.JButton" binding="addBookButton">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
           <text value="Add Book"/>
         </properties>
       </component>
       <component id="5e9cc" class="javax.swing.JButton" binding="viewBooksButton">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
           <text value="View Books"/>
         </properties>
       </component>
       <component id="bbf0f" class="javax.swing.JButton" binding="borrowBookButton">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
           <text value="Borrow Book"/>
         </properties>
       </component>
       <component id="2f3aa" class="javax.swing.JButton" binding="viewBorrowedBooksButton">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
           <text value="View Borrowed Books"/>
-        </properties>
-      </component>
-      <component id="19d84" class="javax.swing.JButton" binding="returnBookButton">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Return Book"/>
         </properties>
       </component>
       <component id="d2299" class="javax.swing.JButton" binding="logoutButton">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
           <text value="Logout"/>
+        </properties>
+      </component>
+      <component id="19d84" class="javax.swing.JButton" binding="returnBookButton">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <foreground color="-1"/>
+          <text value="Return Book"/>
         </properties>
       </component>
     </children>

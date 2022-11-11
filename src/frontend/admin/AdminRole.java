@@ -1,4 +1,7 @@
-package frontend;
+package frontend.admin;
+
+import frontend.utils.Navigator;
+import frontend.Page;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
@@ -27,7 +30,7 @@ public class AdminRole implements Page {
 
         logoutButton.addActionListener(e -> {
             // TODO save data
-            Navigator.exit();
+            Navigator.back();
         });
         logoutButton.setUI(new BasicButtonUI());
     }

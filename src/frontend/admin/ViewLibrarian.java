@@ -1,6 +1,7 @@
-package frontend;
+package frontend.admin;
 
 import backend.library.users.LibrarianUser;
+import frontend.Page;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTableUI;
