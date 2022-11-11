@@ -5,7 +5,6 @@ import frontend.Page;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
-import java.awt.event.ActionEvent;
 
 public class LibrarianRole implements Page {
     private JButton addBookButton;
@@ -21,29 +20,29 @@ public class LibrarianRole implements Page {
         frame = new JFrame("Librarian Role");
         frame.setContentPane(panel);
 
-        addBookButton.addActionListener((e) -> Navigator.goTo(null));
+        backend.library.database.LibrarianRole role = new backend.library.database.LibrarianRole();
+
+        addBookButton.addActionListener((e) -> Navigator.goTo(new AddBook(role)));
         addBookButton.setUI(new BasicButtonUI());
 
-        viewBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBooks()));
+        viewBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBooks(role)));
         viewBooksButton.setUI(new BasicButtonUI());
 
-        borrowBookButton.addActionListener((e) -> Navigator.goTo(null));
+        borrowBookButton.addActionListener((e) -> Navigator.goTo(new BorrowBook(role)));
         borrowBookButton.setUI(new BasicButtonUI());
 
-        viewBorrowedBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBorrowedBooks()));
+        viewBorrowedBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBorrowedBooks(role)));
         viewBorrowedBooksButton.setUI(new BasicButtonUI());
 
-        returnBookButton.addActionListener((e) -> Navigator.goTo(null));
+        returnBookButton.addActionListener((e) -> Navigator.goTo(new ReturnBook(role)));
         returnBookButton.setUI(new BasicButtonUI());
 
-        logoutButton.addActionListener(this::logout);
+        logoutButton.addActionListener((e) -> {
+            role.logout();
+
+            Navigator.back();
+        });
         logoutButton.setUI(new BasicButtonUI());
-    }
-
-    private void logout(ActionEvent e) {
-        // TODO Save data
-
-        Navigator.back();
     }
 
     @Override

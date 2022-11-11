@@ -12,11 +12,9 @@ public class ViewBooks implements Page {
     private JPanel panel;
     private JFrame frame;
 
-    public ViewBooks() {
+    public ViewBooks(LibrarianRole role) {
         frame = new JFrame("View Books");
         frame.setContentPane(panel);
-
-        LibrarianRole role = new LibrarianRole();
 
         Book[] books = role.getListOfBooks();
         String[][] data = new String[books.length][5];

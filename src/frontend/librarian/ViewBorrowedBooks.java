@@ -13,11 +13,9 @@ public class ViewBorrowedBooks implements Page {
     private JPanel panel;
     private JTable table;
 
-    public ViewBorrowedBooks() {
+    public ViewBorrowedBooks(LibrarianRole role) {
         frame = new JFrame("View Borrowed Books");
         frame.setContentPane(panel);
-
-        LibrarianRole role = new LibrarianRole();
 
         StudentBook[] studentBooks = role.getListOfBorrowingOperations();
         String[][] data = new String[studentBooks.length][3];

@@ -41,7 +41,7 @@ public class AddLibrarian implements Page {
             }
 
             if (SearchSavables.handle(role.getListOfLibrarians(), id) != null) {
-                JOptionPane.showMessageDialog(frame, "ID number = " + id + " already exists!");
+                JOptionPane.showMessageDialog(frame, "The librarian with id = " + id + " already exists!");
                 return;
             }
 
