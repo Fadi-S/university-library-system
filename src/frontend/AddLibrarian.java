@@ -4,10 +4,8 @@ import backend.library.users.AdminRole;
 import frontend.validation.IsRequiredField;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class AddLibrarian extends JFrame implements Node {
+public class AddLibrarian extends JFrame implements Page {
     private JPanel panel8;
     private JTextField IDtextField1;
     private JButton addButton;
@@ -15,14 +13,10 @@ public class AddLibrarian extends JFrame implements Node {
     private JTextField EmailTextField3;
     private JTextField AddressTextField4;
     private JTextField PhoneTextField;
-    Node parent;
-
 
     public AddLibrarian(){
         setContentPane(panel8);
-        setTitle("View Librarian");
-        setSize(450,300);
-        setVisible(true);
+        setTitle("Add Librarian");
 
         IDtextField1.setInputVerifier(new IsRequiredField());
         NametextField2.setInputVerifier(new IsRequiredField());
@@ -47,14 +41,7 @@ public class AddLibrarian extends JFrame implements Node {
         });
     }
 
-
-    @Override
-    public void setParentNode(Node n) {
-        this.parent=n;
-    }
-
-    @Override
-    public Node getParentNode() {
-        return parent;
+    public JFrame getFrame() {
+        return this;
     }
 }

@@ -1,13 +1,11 @@
 package frontend.auth;
 
+import frontend.librarian.LibrarianRole;
 import constant.LoginCredentials;
-import frontend.Node;
 
-public class LibrarianLogin extends Login implements Node {
-    private Node parent;
-
+public class LibrarianLogin extends Login {
     public LibrarianLogin() {
-        setTitle("Librarian login");
+        super();
 
         name = LoginCredentials.LIBRARIAN_USERNAME;
         password = LoginCredentials.LIBRARIAN_PASSWORD;
@@ -15,16 +13,6 @@ public class LibrarianLogin extends Login implements Node {
 
     @Override
     void login() {
-        // TODO redirect to librarian role frontend
-    }
-
-    @Override
-    public void setParentNode(Node n) {
-        this.parent = n;
-    }
-
-    @Override
-    public Node getParentNode() {
-        return parent;
+        new LibrarianRole();
     }
 }

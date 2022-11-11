@@ -5,7 +5,7 @@ import frontend.auth.LibrarianLogin;
 
 import javax.swing.*;
 
-public class LibrarySystemWindow extends JFrame implements Node {
+public class LibrarySystemWindow extends JFrame implements Page {
     private JPanel mainPanel;
     private JButton adminRoleButton;
     private JButton librarianRoleButton;
@@ -13,35 +13,20 @@ public class LibrarySystemWindow extends JFrame implements Node {
     public LibrarySystemWindow() {
         super("Library System");
 
-        adminRoleButton.addActionListener(e -> {
-            setVisible(false);
-            AdminLogin adminLogin = new AdminLogin();
-            adminLogin.setParentNode(getParentNode());
-        });
+        adminRoleButton.addActionListener(e -> Navigator.goTo(new AdminLogin()));
 
-        librarianRoleButton.addActionListener(e -> {
-            setVisible(false);
-            LibrarianLogin librarianLogin = new LibrarianLogin();
-            librarianLogin.setParentNode(getParentNode());
-        });
+        librarianRoleButton.addActionListener(e -> Navigator.goTo(new LibrarianLogin()));
     }
 
     public void render()
     {
         setContentPane(mainPanel);
         setTitle("Library system");
-        setSize(450, 300);
-        setVisible(true);
+        Navigator.goTo(this);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
-    @Override
-    public void setParentNode(Node n) {
-
-    }
-
-    @Override
-    public Node getParentNode() {
+    public JFrame getFrame() {
         return this;
     }
 }

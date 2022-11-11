@@ -1,32 +1,33 @@
 package frontend.auth;
 
-import frontend.Node;
+import frontend.Page;
 
 import javax.swing.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import javax.swing.plaf.basic.BasicButtonUI;
+import javax.swing.plaf.basic.BasicTextFieldUI;
 
-public abstract class Login extends JFrame implements Node {
+public abstract class Login extends JFrame implements Page {
     private JPanel panel1;
     private JTextField nameTextField;
     private JButton loginButton;
     private JPasswordField passwordField;
     String name;
     String password;
-    private Node parent;
+    private Page parent;
 
     Login() {
         setContentPane(panel1);
-        setTitle("Librarian login");
-        setSize(450, 300);
-        setVisible(true);
+
+        nameTextField.setUI(new BasicTextFieldUI());
+        passwordField.setUI(new BasicTextFieldUI());
+
+        loginButton.setUI(new BasicButtonUI());
 
         loginButton.addActionListener(e -> {
             String inputName = nameTextField.getText();
             String inputPassword = String.valueOf(passwordField.getPassword());
-            if (name.equals(inputName) && password.equals(inputPassword)) {
+            if (name.equalsIgnoreCase(inputName) && password.equals(inputPassword)) {
                 login();
-
                return;
             }
 
@@ -34,24 +35,11 @@ public abstract class Login extends JFrame implements Node {
         });
 
         passwordField.addActionListener((e) -> loginButton.doClick());
-
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                setVisible(false);
-                ((JFrame) getParentNode()).setVisible(true);
-            }
-        });
     }
 
     abstract void login();
 
-    @Override
-    public void setParentNode(Node n) {
-
-    }
-
-    @Override
-    public Node getParentNode() {
-        return null;
+    public JFrame getFrame() {
+        return this;
     }
 }
