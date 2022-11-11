@@ -32,6 +32,7 @@ public class AdminRole implements Page {
 
         logoutButton.addActionListener(e -> {
             role.logout();
+            JOptionPane.showMessageDialog(null,"all data has been saved");
             Navigator.back();
         });
         logoutButton.setUI(new BasicButtonUI());
