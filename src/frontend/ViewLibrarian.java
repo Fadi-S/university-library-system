@@ -3,11 +3,11 @@ package frontend;
 import backend.library.users.LibrarianUser;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.plaf.basic.BasicTableUI;
 
 public class ViewLibrarian implements Page {
     private JPanel panel5;
-    private JTable table1;
+    private final JTable table1;
 
     String[][] data;
     private JFrame frame;
@@ -28,13 +28,15 @@ public class ViewLibrarian implements Page {
             data[i][3] = librarian[i].getAddress();
             data[i][4] = librarian[i].getPhoneNumber();
         }
-        table1.setModel(new DefaultTableModel(data, columns) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        });
+        table1=new JTable(data,columns){@Override
+            public boolean isCellEditable(int row, int column) {return false;}
+        };
+        table1.getTableHeader().setReorderingAllowed(false);
+        table1.setUI(new BasicTableUI());
         table1.setBounds(30, 40, 200, 300);
+        JScrollPane sp = new JScrollPane(table1);
+        frame.add(sp);
+
     }
 
     public JFrame getFrame() {

@@ -6,13 +6,6 @@
     </constraints>
     <properties/>
     <border type="none"/>
-    <children>
-      <component id="6ff0a" class="javax.swing.JTable" binding="table1" default-binding="true">
-        <constraints border-constraint="Center"/>
-        <properties>
-          <autoCreateRowSorter value="false"/>
-        </properties>
-      </component>
-    </children>
+    <children/>
   </grid>
 </form>
