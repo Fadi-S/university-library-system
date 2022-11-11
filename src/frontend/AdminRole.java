@@ -10,11 +10,10 @@ public class AdminRole implements Page {
     private JPanel panel4;
     private JFrame frame;
 
-    public AdminRole() {
-        frame = new JFrame();
 
+    public AdminRole() {
+        frame = new JFrame("Admin Role");
         frame.setContentPane(panel4);
-        frame.setTitle("Admin Role");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian()));

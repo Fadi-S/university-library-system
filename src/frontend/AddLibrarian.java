@@ -1,7 +1,7 @@
 package frontend;
 
+import backend.library.database.Savable;
 import backend.library.users.AdminRole;
-import frontend.validation.IsRequiredField;
 
 import javax.swing.*;
 
@@ -13,35 +13,50 @@ public class AddLibrarian implements Page {
     private JTextField EmailTextField3;
     private JTextField AddressTextField4;
     private JTextField PhoneTextField;
+    String name;
+    String id;
+    String phoneNumber;
+    String address;
+    String email;
 
     private JFrame frame;
 
     public AddLibrarian() {
-        frame = new JFrame();
+        frame = new JFrame("Add Librarian");
         frame.setContentPane(panel8);
-        frame.setTitle("Add Librarian");
-
-        IDtextField1.setInputVerifier(new IsRequiredField());
-        NametextField2.setInputVerifier(new IsRequiredField());
-        EmailTextField3.setInputVerifier(new IsRequiredField());
-        AddressTextField4.setInputVerifier(new IsRequiredField());
-        PhoneTextField.setInputVerifier(new IsRequiredField());
 
         addButton.addActionListener(e -> {
             AdminRole role = new AdminRole();
+            name = NametextField2.getText();
+            id = IDtextField1.getText();
+            phoneNumber = PhoneTextField.getText();
+            email = EmailTextField3.getText();
+            address = AddressTextField4.getText();
 
-            if(! ( IDtextField1.isValid() &&
-            NametextField2.isValid() &&
-            EmailTextField3.isValid() &&
-            AddressTextField4.isValid() &&
-            PhoneTextField.isValid() )) {
-
-                JOptionPane.showMessageDialog(null, "All fields must be filled");
+            if (email.trim().equals("") ||
+                    name.trim().equals("") ||
+                    address.trim().equals("") ||
+                    phoneNumber.trim().equals("") ||
+                    id.trim().equals("")) {
+                JOptionPane.showMessageDialog(frame, "All fields must be filled");
                 return;
             }
 
-            role.addLibrarian(IDtextField1.getText(),NametextField2.getText(),EmailTextField3.getText(),AddressTextField4.getText(),PhoneTextField.getText());
+            if (SameID(id, role.getListOfLibrarians())) {
+                JOptionPane.showMessageDialog(frame, "ID number= " + id + " is already exist");
+                return;
+            }
+            role.addLibrarian(id, name, email, address, phoneNumber);
+
         });
+    }
+
+    public Boolean SameID(String id, Savable[] role) {
+        for (Savable savable : role) {
+            if (id.equals(savable.getSearchKey()))
+                return true;
+        }
+        return false;
     }
 
     public JFrame getFrame() {

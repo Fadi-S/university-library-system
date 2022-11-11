@@ -25,8 +25,7 @@ public class AdminRole implements FileNames {
 
     public LibrarianUser[] getListOfLibrarians()
     {
-        if(database.returnAllRecords()!= null) return (LibrarianUser[])database.returnAllRecords().toArray();
-        return null;
+        return database.returnAllRecords().toArray(new LibrarianUser[0]);
     }
 
     public void logout() {
