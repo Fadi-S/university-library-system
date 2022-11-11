@@ -5,13 +5,15 @@ import frontend.auth.LibrarianLogin;
 
 import javax.swing.*;
 
-public class LibrarySystemWindow extends JFrame implements Page {
+public class LibrarySystemWindow implements Page {
     private JPanel mainPanel;
     private JButton adminRoleButton;
     private JButton librarianRoleButton;
 
+    private JFrame frame;
+
     public LibrarySystemWindow() {
-        super("Library System");
+        frame = new JFrame("Library System");
 
         adminRoleButton.addActionListener(e -> Navigator.goTo(new AdminLogin()));
 
@@ -20,13 +22,14 @@ public class LibrarySystemWindow extends JFrame implements Page {
 
     public void render()
     {
-        setContentPane(mainPanel);
-        setTitle("Library system");
+        frame.setContentPane(mainPanel);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         Navigator.goTo(this);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public JFrame getFrame() {
-        return this;
+        return frame;
     }
 }

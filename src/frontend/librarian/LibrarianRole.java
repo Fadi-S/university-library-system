@@ -1,9 +1,12 @@
 package frontend.librarian;
 
+import frontend.Navigator;
+import frontend.Page;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class LibrarianRole {
+public class LibrarianRole implements Page {
     private JButton addBookButton;
     private JButton viewBooksButton;
     private JButton borrowBookButton;
@@ -18,8 +21,6 @@ public class LibrarianRole {
         frame.setContentPane(panel);
         frame.setTitle("Librarian Role");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.setSize(450, 300);
-        frame.setVisible(true);
 
         addBookButton.addActionListener(this::addBook);
         viewBooksButton.addActionListener(this::viewBooks);
@@ -30,31 +31,31 @@ public class LibrarianRole {
     }
 
     private void addBook(ActionEvent e) {
-        hide();
 
     }
 
     private void viewBooks(ActionEvent e) {
-        hide();
+        Navigator.goTo(new ViewBooks());
     }
 
     private void borrowBook(ActionEvent e) {
-        hide();
+
     }
 
     private void viewBorrowedBooks(ActionEvent e) {
-        hide();
+
     }
 
     private void returnBook(ActionEvent e) {
-        hide();
+
     }
 
     private void logout(ActionEvent e) {
-        frame.dispose();
+
     }
 
-    private void hide() {
-        frame.setVisible(false);
+    @Override
+    public JFrame getFrame() {
+        return frame;
     }
 }

@@ -2,18 +2,20 @@ package frontend;
 
 import javax.swing.*;
 
-public class AdminRole extends JFrame implements Page {
+public class AdminRole implements Page {
     private JButton addLibrarianButton;
     private JButton ViewLibrarian;
     private JButton RemoveLibrarian;
     private JButton logout;
     private JPanel panel4;
-    Page parent;
+    private JFrame frame;
 
     public AdminRole() {
-        setContentPane(panel4);
-        setTitle("Admin Role");
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        frame = new JFrame();
+
+        frame.setContentPane(panel4);
+        frame.setTitle("Admin Role");
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian()));
 
@@ -22,11 +24,12 @@ public class AdminRole extends JFrame implements Page {
         RemoveLibrarian.addActionListener(e -> Navigator.goTo(new RemoveLibrarian()));
 
         logout.addActionListener(e -> {
-            // TODO logout
+            // TODO save data
+            Navigator.exit();
         });
     }
 
     public JFrame getFrame() {
-        return this;
+        return frame;
     }
 }

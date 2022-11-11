@@ -5,7 +5,7 @@ import frontend.validation.IsRequiredField;
 
 import javax.swing.*;
 
-public class AddLibrarian extends JFrame implements Page {
+public class AddLibrarian implements Page {
     private JPanel panel8;
     private JTextField IDtextField1;
     private JButton addButton;
@@ -14,9 +14,12 @@ public class AddLibrarian extends JFrame implements Page {
     private JTextField AddressTextField4;
     private JTextField PhoneTextField;
 
-    public AddLibrarian(){
-        setContentPane(panel8);
-        setTitle("Add Librarian");
+    private JFrame frame;
+
+    public AddLibrarian() {
+        frame = new JFrame();
+        frame.setContentPane(panel8);
+        frame.setTitle("Add Librarian");
 
         IDtextField1.setInputVerifier(new IsRequiredField());
         NametextField2.setInputVerifier(new IsRequiredField());
@@ -42,6 +45,6 @@ public class AddLibrarian extends JFrame implements Page {
     }
 
     public JFrame getFrame() {
-        return this;
+        return frame;
     }
 }

@@ -11,16 +11,16 @@ public class Navigator {
 
     public static void goTo(Page page)
     {
-        JFrame frame = page.getFrame();
-        frame.setVisible(true);
-        frame.setSize(450, 300);
-
         if(! pages.isEmpty()) {
             pages.peek().getFrame().setVisible(false);
         }
 
+        JFrame frame = page.getFrame();
+        frame.setVisible(true);
+        frame.setSize(400, 500);
 
-        frame.addWindowListener(new WindowAdapter() {
+        if(frame.getDefaultCloseOperation() != JFrame.DO_NOTHING_ON_CLOSE)
+            frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     Navigator.back();
                 }
@@ -31,9 +31,16 @@ public class Navigator {
 
     public static void back()
     {
+        if(pages.isEmpty()) {
+            return;
+        }
+
         Page page = pages.pop();
 
-        page.getFrame().dispose();
+        JFrame frame = page.getFrame();
+
+        if(frame.getDefaultCloseOperation() != JFrame.DO_NOTHING_ON_CLOSE)
+            frame.dispose();
 
         if(! pages.isEmpty()) {
             pages.peek().getFrame().setVisible(true);
