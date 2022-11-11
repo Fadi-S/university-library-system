@@ -9,11 +9,10 @@ public class ViewLibrarian implements Page {
     private JPanel panel5;
     private JTable table1;
 
-    String[][] data;
     private JFrame frame;
 
     public ViewLibrarian() {
-        frame = new JFrame("View Librarian");
+        frame = new JFrame("View Librarians");
 
         String[] columns = {"id", "name", "email", "address", "phone number"};
         frame.setContentPane(panel5);

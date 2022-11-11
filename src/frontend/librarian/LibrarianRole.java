@@ -17,10 +17,8 @@ public class LibrarianRole implements Page {
     private final JFrame frame;
 
     public LibrarianRole() {
-        frame = new JFrame();
+        frame = new JFrame("Librarian Role");
         frame.setContentPane(panel);
-        frame.setTitle("Librarian Role");
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         addBookButton.addActionListener(this::addBook);
         viewBooksButton.addActionListener(this::viewBooks);
@@ -43,7 +41,7 @@ public class LibrarianRole implements Page {
     }
 
     private void viewBorrowedBooks(ActionEvent e) {
-
+        Navigator.goTo(new ViewBorrowedBooks());
     }
 
     private void returnBook(ActionEvent e) {
@@ -51,11 +49,18 @@ public class LibrarianRole implements Page {
     }
 
     private void logout(ActionEvent e) {
+        // TODO Save data
 
+        Navigator.exit();
     }
 
     @Override
     public JFrame getFrame() {
         return frame;
+    }
+
+    @Override
+    public boolean closable() {
+        return false;
     }
 }

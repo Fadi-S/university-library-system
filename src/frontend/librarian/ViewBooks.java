@@ -36,17 +36,15 @@ public class ViewBooks implements Page {
                 "Publisher",
                 "No Of Copies"
         };
-        table = new JTable(data, columns){
+        table = new JTable(data, columns) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         table.setUI(new BasicTableUI());
-
         table.setBounds(30, 40, 200, 300);
 
-        JScrollPane sp = new JScrollPane(table);
-        frame.add(sp);
+        frame.add(new JScrollPane(table));
     }
 
     @Override

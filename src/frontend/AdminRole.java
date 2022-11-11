@@ -1,34 +1,43 @@
 package frontend;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicButtonUI;
 
 public class AdminRole implements Page {
     private JButton addLibrarianButton;
-    private JButton ViewLibrarian;
-    private JButton RemoveLibrarian;
-    private JButton logout;
-    private JPanel panel4;
-    private JFrame frame;
+    private JButton viewLibrarianButton;
+    private JButton removeLibrarianButton;
+    private JButton logoutButton;
+    private JPanel panel;
+    private final JFrame frame;
 
 
     public AdminRole() {
         frame = new JFrame("Admin Role");
-        frame.setContentPane(panel4);
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setContentPane(panel);
 
         addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian()));
+        addLibrarianButton.setUI(new BasicButtonUI());
 
-        ViewLibrarian.addActionListener(e -> Navigator.goTo(new ViewLibrarian()));
+        viewLibrarianButton.addActionListener(e -> Navigator.goTo(new ViewLibrarian()));
+        viewLibrarianButton.setUI(new BasicButtonUI());
 
-        RemoveLibrarian.addActionListener(e -> Navigator.goTo(new RemoveLibrarian()));
+        removeLibrarianButton.addActionListener(e -> Navigator.goTo(new RemoveLibrarian()));
+        removeLibrarianButton.setUI(new BasicButtonUI());
 
-        logout.addActionListener(e -> {
+        logoutButton.addActionListener(e -> {
             // TODO save data
             Navigator.exit();
         });
+        logoutButton.setUI(new BasicButtonUI());
     }
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public boolean closable()
+    {
+        return false;
     }
 }

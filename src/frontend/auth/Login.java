@@ -45,4 +45,9 @@ public abstract class Login implements Page {
     public JFrame getFrame() {
         return frame;
     }
+
+    @Override
+    public boolean shouldSkip() {
+        return true;
+    }
 }

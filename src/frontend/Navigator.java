@@ -19,12 +19,15 @@ public class Navigator {
         frame.setVisible(true);
         frame.setSize(400, 500);
 
-        if(frame.getDefaultCloseOperation() != JFrame.DO_NOTHING_ON_CLOSE)
+        if(page.closable()) {
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent e) {
                     Navigator.back();
                 }
             });
+        }else {
+            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
 
         pages.push(page);
     }
@@ -39,11 +42,16 @@ public class Navigator {
 
         JFrame frame = page.getFrame();
 
-        if(frame.getDefaultCloseOperation() != JFrame.DO_NOTHING_ON_CLOSE)
+        if(page.closable())
             frame.dispose();
 
         if(! pages.isEmpty()) {
-            pages.peek().getFrame().setVisible(true);
+            Page parentPage = pages.peek();
+            parentPage.getFrame().setVisible(true);
+
+            if(parentPage.shouldSkip()) {
+                back();
+            }
         }
     }
 
