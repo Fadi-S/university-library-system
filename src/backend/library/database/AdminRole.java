@@ -1,4 +1,5 @@
-package backend.library.users;
+package backend.library.database;
+import backend.library.users.LibrarianUser;
 import constant.FileNames;
 import backend.library.database.LibrarianUserDatabase;
 

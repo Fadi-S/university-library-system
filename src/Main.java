@@ -1,5 +1,5 @@
-import backend.library.users.AdminRole;
-import backend.library.users.LibrarianRole;
+import backend.library.database.AdminRole;
+import backend.library.database.LibrarianRole;
 import backend.library.users.LibrarianUser;
 
 import java.time.LocalDate;

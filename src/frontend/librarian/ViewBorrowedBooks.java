@@ -1,6 +1,6 @@
 package frontend.librarian;
 
-import backend.library.users.LibrarianRole;
+import backend.library.database.LibrarianRole;
 import backend.library.utils.StudentBook;
 import frontend.Page;
 
@@ -17,7 +17,7 @@ public class ViewBorrowedBooks implements Page {
         frame = new JFrame("View Borrowed Books");
         frame.setContentPane(panel);
 
-        backend.library.users.LibrarianRole role = new LibrarianRole();
+        LibrarianRole role = new LibrarianRole();
 
         StudentBook[] studentBooks = role.getListOfBorrowingOperations();
         String[][] data = new String[studentBooks.length][3];

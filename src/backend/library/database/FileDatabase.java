@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
-public abstract class FileDatabase implements Database {
+abstract class FileDatabase implements Database {
     private final String filname;
     private ArrayList<Savable> records;
 
     public static final String path = "files/";
 
-    public FileDatabase(String filename) {
+    FileDatabase(String filename) {
         this.filname = path + filename;
         readFromFile();
     }

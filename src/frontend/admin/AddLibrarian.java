@@ -1,7 +1,6 @@
 package frontend.admin;
 
-import backend.library.database.Savable;
-import backend.library.users.AdminRole;
+import backend.library.database.AdminRole;
 import frontend.Page;
 import frontend.utils.SearchSavables;
 

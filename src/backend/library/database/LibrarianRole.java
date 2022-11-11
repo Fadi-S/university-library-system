@@ -1,4 +1,4 @@
-package backend.library.users;
+package backend.library.database;
 
 import backend.library.database.BookDatabase;
 import backend.library.database.FileDatabase;

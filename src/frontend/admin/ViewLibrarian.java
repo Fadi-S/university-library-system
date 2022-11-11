@@ -1,5 +1,6 @@
 package frontend.admin;
 
+import backend.library.database.AdminRole;
 import backend.library.users.LibrarianUser;
 import frontend.Page;
 
@@ -18,7 +19,7 @@ public class ViewLibrarian implements Page {
         String[] columns = {"id", "name", "email", "address", "phone number"};
         frame.setContentPane(panel5);
 
-        backend.library.users.AdminRole adminRole = new backend.library.users.AdminRole();
+        AdminRole adminRole = new AdminRole();
         LibrarianUser[] librarian = adminRole.getListOfLibrarians();
         String[][] data = new String[librarian.length][5];
         for (int i = 0; i < librarian.length; i++) {

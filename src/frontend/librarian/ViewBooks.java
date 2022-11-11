@@ -1,7 +1,7 @@
 package frontend.librarian;
 
 import backend.library.utils.Book;
-import backend.library.users.LibrarianRole;
+import backend.library.database.LibrarianRole;
 import frontend.Page;
 
 import javax.swing.*;
