@@ -64,10 +64,6 @@ abstract class FileDatabase implements Database {
 
     public void addRecordToFile(Savable record) {
         insertRecord(record);
-
-        saveToFile();
-
-        readFromFile();
     }
 
     @Override

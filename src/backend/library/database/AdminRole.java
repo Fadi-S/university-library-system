@@ -20,8 +20,6 @@ public class AdminRole implements FileNames {
 
     public void removeLibrarian(String key) {
         database.deleteRecord(key);
-
-        database.saveToFile();
     }
 
     public LibrarianUser[] getListOfLibrarians()
