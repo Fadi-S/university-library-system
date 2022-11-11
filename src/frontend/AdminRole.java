@@ -2,49 +2,34 @@ package frontend;
 
 import javax.swing.*;
 
-public class AdminRole extends JFrame implements Node {
+public class AdminRole implements Page {
     private JButton addLibrarianButton;
     private JButton ViewLibrarian;
     private JButton RemoveLibrarian;
     private JButton logout;
     private JPanel panel4;
-    Node parent;
+    private JFrame frame;
 
     public AdminRole() {
-        setContentPane(panel4);
-        setTitle("Admin Role");
-        setSize(450,300);
-        setVisible(true);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        frame = new JFrame();
 
-        addLibrarianButton.addActionListener(e -> {
-            setVisible(false);
-            new AddLibrarian();
-        });
+        frame.setContentPane(panel4);
+        frame.setTitle("Admin Role");
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        ViewLibrarian.addActionListener(e -> {
-            setVisible(false);
-            new ViewLibrarian();
-        });
+        addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian()));
 
-        RemoveLibrarian.addActionListener(e -> {
-            setVisible(false);
-            new RemoveLibrarian();
-        });
+        ViewLibrarian.addActionListener(e -> Navigator.goTo(new ViewLibrarian()));
+
+        RemoveLibrarian.addActionListener(e -> Navigator.goTo(new RemoveLibrarian()));
 
         logout.addActionListener(e -> {
-            setVisible(false);
-            new Logout();
+            // TODO save data
+            Navigator.exit();
         });
     }
 
-    @Override
-    public void setParentNode(Node n) {
-        this.parent = n;
-    }
-
-    @Override
-    public Node getParentNode() {
-        return this;
+    public JFrame getFrame() {
+        return frame;
     }
 }

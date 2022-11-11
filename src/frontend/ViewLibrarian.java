@@ -2,24 +2,16 @@ package frontend;
 
 import javax.swing.*;
 
-public class ViewLibrarian extends JFrame implements Node {
+public class ViewLibrarian implements Page {
     private JPanel panel5;
-    Node parent;
-
+    private JFrame frame;
     public ViewLibrarian(){
-        setContentPane(panel5);
-        setTitle("View Librarian");
-        setSize(450,300);
-        setVisible(true);
+        frame = new JFrame("View Librarian");
+
+        frame.setContentPane(panel5);
     }
 
-    @Override
-    public void setParentNode(Node n) {
-        this.parent=n;
-    }
-
-    @Override
-    public Node getParentNode() {
-        return parent;
+    public JFrame getFrame() {
+        return frame;
     }
 }
