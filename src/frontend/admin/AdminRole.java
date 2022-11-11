@@ -19,17 +19,19 @@ public class AdminRole implements Page {
         frame = new JFrame("Admin Role");
         frame.setContentPane(panel);
 
-        addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian()));
+        backend.library.database.AdminRole role = new backend.library.database.AdminRole();
+
+        addLibrarianButton.addActionListener(e -> Navigator.goTo(new AddLibrarian(role)));
         addLibrarianButton.setUI(new BasicButtonUI());
 
-        viewLibrarianButton.addActionListener(e -> Navigator.goTo(new ViewLibrarian()));
+        viewLibrarianButton.addActionListener(e -> Navigator.goTo(new ViewLibrarian(role)));
         viewLibrarianButton.setUI(new BasicButtonUI());
 
-        removeLibrarianButton.addActionListener(e -> Navigator.goTo(new RemoveLibrarian()));
+        removeLibrarianButton.addActionListener(e -> Navigator.goTo(new RemoveLibrarian(role)));
         removeLibrarianButton.setUI(new BasicButtonUI());
 
         logoutButton.addActionListener(e -> {
-            // TODO save data
+            role.logout();
             Navigator.back();
         });
         logoutButton.setUI(new BasicButtonUI());

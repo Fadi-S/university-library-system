@@ -8,19 +8,17 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicTableUI;
 
 public class ViewLibrarian implements Page {
-    private JPanel panel5;
-    private final JTable table1;
+    private JPanel panel;
 
-    private JFrame frame;
+    private final JFrame frame;
 
-    public ViewLibrarian() {
+    public ViewLibrarian(AdminRole role) {
         frame = new JFrame("View Librarians");
 
-        String[] columns = {"id", "name", "email", "address", "phone number"};
-        frame.setContentPane(panel5);
+        String[] columns = {"Librarian ID", "Name", "Email", "Address", "Phone Number"};
+        frame.setContentPane(panel);
 
-        AdminRole adminRole = new AdminRole();
-        LibrarianUser[] librarian = adminRole.getListOfLibrarians();
+        LibrarianUser[] librarian = role.getListOfLibrarians();
         String[][] data = new String[librarian.length][5];
         for (int i = 0; i < librarian.length; i++) {
             data[i][0] = librarian[i].getId();
@@ -29,14 +27,18 @@ public class ViewLibrarian implements Page {
             data[i][3] = librarian[i].getAddress();
             data[i][4] = librarian[i].getPhoneNumber();
         }
-        table1=new JTable(data,columns){@Override
-            public boolean isCellEditable(int row, int column) {return false;}
+        JTable table = new JTable(data, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
         };
-        table1.getTableHeader().setReorderingAllowed(false);
-        table1.setUI(new BasicTableUI());
-        table1.setBounds(30, 40, 200, 300);
-        JScrollPane sp = new JScrollPane(table1);
-        frame.add(sp);
+
+        table.getTableHeader().setReorderingAllowed(false);
+        table.setUI(new BasicTableUI());
+
+        table.setBounds(30, 40, 200, 300);
+        frame.add(new JScrollPane(table));
 
     }
 

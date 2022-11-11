@@ -23,13 +23,12 @@ public class AddLibrarian implements Page {
 
     private final JFrame frame;
 
-    public AddLibrarian() {
+    public AddLibrarian(AdminRole role) {
         frame = new JFrame("Add Librarian");
         frame.setContentPane(panel);
 
         addButton.setUI(new BasicButtonUI());
         addButton.addActionListener(e -> {
-            AdminRole role = new AdminRole();
             name = NameTextField.getText();
             id = IDTextField.getText();
             phoneNumber = phoneTextField.getText();
@@ -37,17 +36,29 @@ public class AddLibrarian implements Page {
             address = addressTextField.getText();
 
             if (email.isBlank() || name.isBlank() || address.isBlank() || phoneNumber.isBlank() || id.isBlank()) {
-                JOptionPane.showMessageDialog(frame, "All fields must be filled");
+                JOptionPane.showMessageDialog(frame, "Some fields are empty");
                 return;
             }
 
             if (SearchSavables.handle(role.getListOfLibrarians(), id) != null) {
-                JOptionPane.showMessageDialog(frame, "ID number= " + id + " is already exist");
+                JOptionPane.showMessageDialog(frame, "ID number = " + id + " already exists!");
                 return;
             }
 
             role.addLibrarian(id, name, email, address, phoneNumber);
+
+            JOptionPane.showMessageDialog(frame, "The librarian with id = " + id + " has been successfully added.");
+            clearForm();
         });
+    }
+
+    private void clearForm()
+    {
+        NameTextField.setText("");
+        IDTextField.setText("");
+        phoneTextField.setText("");
+        emailTextField.setText("");
+        addressTextField.setText("");
     }
 
     public JFrame getFrame() {

@@ -13,23 +13,22 @@ public class RemoveLibrarian implements Page {
     private JButton removeButton;
     private final JFrame frame;
 
-    public RemoveLibrarian() {
+    public RemoveLibrarian(AdminRole role) {
         frame = new JFrame("Remove Librarian");
         frame.setContentPane(panel);
-
-        AdminRole role = new AdminRole();
 
         removeButton.setUI(new BasicButtonUI());
         removeButton.addActionListener(e -> {
             String id = idTextField.getText();
 
             if (SearchSavables.handle(role.getListOfLibrarians(), id) == null) {
-                JOptionPane.showMessageDialog(frame, "Id number =" + id + " doesn't exist");
+                JOptionPane.showMessageDialog(frame, "The librarian with id = " + id + " doesn't exist");
                 return;
             }
 
             role.removeLibrarian(id);
-            JOptionPane.showMessageDialog(frame, "Id number =" + id + " has been removed");
+            JOptionPane.showMessageDialog(frame, "The librarian with id = " + id + " has been removed");
+            idTextField.setText("");
         });
     }
 
