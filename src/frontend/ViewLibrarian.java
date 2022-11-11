@@ -6,10 +6,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class ViewLibrarian extends JFrame implements Node {
-    private final String[] colomnsName;
+//    private final String[] colomnsName;
     private JPanel panel5;
     private JTable table1;
     Node parent;
+
     String[][] data;
 
     public ViewLibrarian(){
@@ -34,6 +35,7 @@ public class ViewLibrarian extends JFrame implements Node {
                 return false;
             }
         });
+        table1.setBounds(30, 40, 200, 300);
         }
 
     @Override
