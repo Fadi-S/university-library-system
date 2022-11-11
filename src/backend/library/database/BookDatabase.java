@@ -2,8 +2,8 @@ package backend.library.database;
 
 import backend.library.utils.Book;
 
-public class BookDatabase extends FileDatabase {
-    public BookDatabase(String filename) {
+class BookDatabase extends FileDatabase {
+    BookDatabase(String filename) {
         super(filename);
     }
 

@@ -1,4 +1,5 @@
-package backend.library.users;
+package backend.library.database;
+import backend.library.users.LibrarianUser;
 import constant.FileNames;
 import backend.library.database.LibrarianUserDatabase;
 
@@ -19,8 +20,6 @@ public class AdminRole implements FileNames {
 
     public void removeLibrarian(String key) {
         database.deleteRecord(key);
-
-        database.saveToFile();
     }
 
     public LibrarianUser[] getListOfLibrarians()

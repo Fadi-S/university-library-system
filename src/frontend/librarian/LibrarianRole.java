@@ -1,10 +1,10 @@
 package frontend.librarian;
 
-import frontend.Navigator;
+import frontend.utils.Navigator;
 import frontend.Page;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import javax.swing.plaf.basic.BasicButtonUI;
 
 public class LibrarianRole implements Page {
     private JButton addBookButton;
@@ -17,45 +17,41 @@ public class LibrarianRole implements Page {
     private final JFrame frame;
 
     public LibrarianRole() {
-        frame = new JFrame();
+        frame = new JFrame("Librarian Role");
         frame.setContentPane(panel);
-        frame.setTitle("Librarian Role");
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        addBookButton.addActionListener(this::addBook);
-        viewBooksButton.addActionListener(this::viewBooks);
-        borrowBookButton.addActionListener(this::borrowBook);
-        viewBorrowedBooksButton.addActionListener(this::viewBorrowedBooks);
-        returnBookButton.addActionListener(this::returnBook);
-        logoutButton.addActionListener(this::logout);
-    }
+        backend.library.database.LibrarianRole role = new backend.library.database.LibrarianRole();
 
-    private void addBook(ActionEvent e) {
+        addBookButton.addActionListener((e) -> Navigator.goTo(new AddBook(role)));
+        addBookButton.setUI(new BasicButtonUI());
 
-    }
+        viewBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBooks(role)));
+        viewBooksButton.setUI(new BasicButtonUI());
 
-    private void viewBooks(ActionEvent e) {
-        Navigator.goTo(new ViewBooks());
-    }
+        borrowBookButton.addActionListener((e) -> Navigator.goTo(new BorrowBook(role)));
+        borrowBookButton.setUI(new BasicButtonUI());
 
-    private void borrowBook(ActionEvent e) {
+        viewBorrowedBooksButton.addActionListener((e) -> Navigator.goTo(new ViewBorrowedBooks(role)));
+        viewBorrowedBooksButton.setUI(new BasicButtonUI());
 
-    }
+        returnBookButton.addActionListener((e) -> Navigator.goTo(new ReturnBook(role)));
+        returnBookButton.setUI(new BasicButtonUI());
 
-    private void viewBorrowedBooks(ActionEvent e) {
+        logoutButton.addActionListener((e) -> {
+            role.logout();
 
-    }
-
-    private void returnBook(ActionEvent e) {
-
-    }
-
-    private void logout(ActionEvent e) {
-
+            Navigator.back();
+        });
+        logoutButton.setUI(new BasicButtonUI());
     }
 
     @Override
     public JFrame getFrame() {
         return frame;
+    }
+
+    @Override
+    public boolean closable() {
+        return false;
     }
 }

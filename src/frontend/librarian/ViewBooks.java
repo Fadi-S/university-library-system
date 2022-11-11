@@ -1,7 +1,7 @@
 package frontend.librarian;
 
 import backend.library.utils.Book;
-import backend.library.users.LibrarianRole;
+import backend.library.database.LibrarianRole;
 import frontend.Page;
 
 import javax.swing.*;
@@ -12,11 +12,9 @@ public class ViewBooks implements Page {
     private JPanel panel;
     private JFrame frame;
 
-    public ViewBooks() {
+    public ViewBooks(LibrarianRole role) {
         frame = new JFrame("View Books");
         frame.setContentPane(panel);
-
-        LibrarianRole role = new LibrarianRole();
 
         Book[] books = role.getListOfBooks();
         String[][] data = new String[books.length][5];
@@ -36,17 +34,15 @@ public class ViewBooks implements Page {
                 "Publisher",
                 "No Of Copies"
         };
-        table = new JTable(data, columns){
+        table = new JTable(data, columns) {
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
         };
         table.setUI(new BasicTableUI());
-
         table.setBounds(30, 40, 200, 300);
 
-        JScrollPane sp = new JScrollPane(table);
-        frame.add(sp);
+        frame.add(new JScrollPane(table));
     }
 
     @Override

@@ -3,7 +3,7 @@ package backend.library.users;
 import backend.library.database.Savable;
 
 public class LibrarianUser implements Savable {
-    protected LibrarianUser(String id, String name, String email, String address, String phoneNumber) {
+    public LibrarianUser(String id, String name, String email, String address, String phoneNumber) {
         this.setId(id);
         this.setName(name);
         this.setEmail(email);

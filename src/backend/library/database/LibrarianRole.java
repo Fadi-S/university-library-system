@@ -1,4 +1,4 @@
-package backend.library.users;
+package backend.library.database;
 
 import backend.library.database.BookDatabase;
 import backend.library.database.FileDatabase;
@@ -41,7 +41,6 @@ public class LibrarianRole implements FileNames {
 
         book.decrement();
         booksDatabase.insertRecord(book);
-        booksDatabase.saveToFile();
 
         return 2;
     }
@@ -59,7 +58,6 @@ public class LibrarianRole implements FileNames {
 
         double lateFee = calculateLateFee(studentBook, returnDate);
         sBDatabase.deleteRecord(studentBook.getSearchKey());
-        sBDatabase.saveToFile();
 
         book.increment();
         booksDatabase.addRecordToFile(book);

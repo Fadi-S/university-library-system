@@ -1,6 +1,6 @@
 package frontend.auth;
 
-import frontend.Navigator;
+import frontend.utils.Navigator;
 import frontend.Page;
 
 import javax.swing.*;
@@ -44,5 +44,10 @@ public abstract class Login implements Page {
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    @Override
+    public boolean shouldSkip() {
+        return true;
     }
 }

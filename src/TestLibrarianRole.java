@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import backend.library.users.LibrarianRole;
+import backend.library.database.LibrarianRole;
 import backend.library.utils.Book;
 import backend.library.utils.StudentBook;
 

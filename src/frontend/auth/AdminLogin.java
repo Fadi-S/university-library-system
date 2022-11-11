@@ -1,7 +1,7 @@
 package frontend.auth;
 
 import constant.LoginCredentials;
-import frontend.AdminRole;
+import frontend.admin.AdminRole;
 import frontend.Page;
 
 public class AdminLogin extends Login {
