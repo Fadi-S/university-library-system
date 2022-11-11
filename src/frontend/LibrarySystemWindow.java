@@ -1,52 +1,35 @@
 package frontend;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import frontend.auth.AdminLogin;
+import frontend.auth.LibrarianLogin;
 
-public class LibrarySystemWindow extends JFrame implements Node {
-    private JPanel panel1;
+import javax.swing.*;
+
+public class LibrarySystemWindow implements Page {
+    private JPanel mainPanel;
     private JButton adminRoleButton;
     private JButton librarianRoleButton;
 
-    private LibrarySystemWindow(){
-    setContentPane(panel1);
-    setTitle("Library system");
-    setSize(450,300);
-    setVisible(true);
+    private JFrame frame;
 
-        adminRoleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                AdminLogin adminLogin=new AdminLogin();
-                adminLogin.setParentNode(getParentNode());
+    public LibrarySystemWindow() {
+        frame = new JFrame("Library System");
 
+        adminRoleButton.addActionListener(e -> Navigator.goTo(new AdminLogin()));
 
-            }
-        });
-        librarianRoleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                LibrarianLogin librarianLogin=new LibrarianLogin();
-                librarianLogin.setParentNode(getParentNode());
-
-
-            }
-        });
-    }
-    public static void main(String[] args) {
-        LibrarySystemWindow librarySystemWindow=new LibrarySystemWindow();
+        librarianRoleButton.addActionListener(e -> Navigator.goTo(new LibrarianLogin()));
     }
 
-    @Override
-    public void setParentNode(Node n) {
+    public void render()
+    {
+        frame.setContentPane(mainPanel);
 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Navigator.goTo(this);
     }
 
-    @Override
-    public Node getParentNode() {
-        return this;
+    public JFrame getFrame() {
+        return frame;
     }
 }
