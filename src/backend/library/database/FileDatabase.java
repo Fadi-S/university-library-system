@@ -9,10 +9,8 @@ abstract class FileDatabase implements Database {
     private final String filname;
     private ArrayList<Savable> records;
 
-    public static final String path = "files/";
-
     FileDatabase(String filename) {
-        this.filname = path + filename;
+        this.filname = filename;
         readFromFile();
     }
 
@@ -91,8 +89,6 @@ abstract class FileDatabase implements Database {
     {
         try {
             File file = new File(this.filname);
-
-            file.getParentFile().mkdirs();
 
             file.createNewFile();
 

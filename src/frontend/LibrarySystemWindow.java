@@ -1,38 +1,36 @@
 package frontend;
 
-import frontend.auth.AdminLogin;
-import frontend.auth.LibrarianLogin;
-import frontend.utils.Navigator;
-
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicButtonUI;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class LibrarySystemWindow implements Page {
+public class LibrarySystemWindow extends JFrame implements Page {
     private JPanel mainPanel;
-    private JButton adminRoleButton;
-    private JButton librarianRoleButton;
-    private JFrame frame;
+    private JButton adminBtn;
+    private JButton librarianBtn;
 
     public LibrarySystemWindow() {
-        frame = new JFrame("Library System");
+        setTitle("Library System");
+        adminBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pages.open(new AdminLogin());
+            }
+        });
 
-        adminRoleButton.setUI(new BasicButtonUI());
-        adminRoleButton.addActionListener(e -> Navigator.goTo(new AdminLogin()));
+        librarianBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pages.open(new LibrarianLogin());
+            }
+        });
 
-        librarianRoleButton.setUI(new BasicButtonUI());
-        librarianRoleButton.addActionListener(e -> Navigator.goTo(new LibrarianLogin()));
+        setContentPane(mainPanel);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Pages.open(this);
     }
 
-    public void render()
-    {
-        frame.setContentPane(mainPanel);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        Navigator.goTo(this);
-    }
-
-    public JFrame getFrame() {
-        return frame;
+    public JFrame getjFrame() {
+        return this;
     }
 }
