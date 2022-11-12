@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LibrarySystemWindow extends JFrame implements Page {
-    private JPanel mainPanel;
+public class LibrarySystem extends JFrame implements Page {
+    private JPanel panel;
     private JButton adminBtn;
     private JButton librarianBtn;
 
-    public LibrarySystemWindow() {
+    public LibrarySystem() {
         setTitle("Library System");
         adminBtn.addActionListener(new ActionListener() {
             @Override
@@ -25,7 +25,7 @@ public class LibrarySystemWindow extends JFrame implements Page {
             }
         });
 
-        setContentPane(mainPanel);
+        setContentPane(panel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Pages.open(this);
     }
