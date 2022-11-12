@@ -5,11 +5,11 @@ import javax.swing.*;
 public interface Page {
     JFrame getjFrame();
 
-    default boolean shouldSkip() {
+    default boolean skip() {
         return false;
     }
 
-    default boolean closable() {
+    default boolean close() {
         return true;
     }
 }

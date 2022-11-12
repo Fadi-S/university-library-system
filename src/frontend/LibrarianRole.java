@@ -70,7 +70,7 @@ public class LibrarianRole extends JFrame implements Page {
     }
 
     @Override
-    public boolean closable() {
+    public boolean close() {
         return false;
     }
 }

@@ -46,7 +46,7 @@ public abstract class Login extends JFrame implements Page {
     }
 
     @Override
-    public boolean shouldSkip() {
+    public boolean skip() {
         return true;
     }
 }

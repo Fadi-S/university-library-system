@@ -52,7 +52,7 @@ public class AdminRole extends JFrame implements Page {
         return this;
     }
 
-    public boolean closable()
+    public boolean close()
     {
         return false;
     }
