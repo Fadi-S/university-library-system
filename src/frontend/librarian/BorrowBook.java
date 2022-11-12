@@ -2,45 +2,51 @@ package frontend.librarian;
 
 import backend.library.database.LibrarianRole;
 import frontend.Page;
+import org.jdatepicker.DateModel;
+import org.jdatepicker.JDatePicker;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class BorrowBook implements Page {
 
     private final JFrame frame;
     private JTextField studentIDTextField;
     private JTextField bookIDTextField;
-    private JTextField borrowDateField;
     private JButton currentDateButton;
     private JButton borrowButton;
     private JPanel panel;
+    private JPanel datePickerPanel;
+
+    private JDatePicker datePicker;
 
     public BorrowBook(LibrarianRole role) {
         frame = new JFrame("Borrow Book");
         frame.setContentPane(panel);
 
+        datePicker = new JDatePicker();
+        datePickerPanel.add(datePicker);
+
         borrowButton.setUI(new BasicButtonUI());
         currentDateButton.setUI(new BasicButtonUI());
 
         currentDateButton.addActionListener((e) -> {
-            borrowDateField.setText(
-                    LocalDate.now().format(DateTimeFormatter.ISO_DATE)
-            );
+            LocalDate now = LocalDate.now();
+            datePicker.getModel().setSelected(true);
+            datePicker.getModel().setDate(now.getYear(), now.getMonthValue()-1, now.getDayOfMonth());
         });
 
         borrowButton.addActionListener((e) -> {
             String bookID = bookIDTextField.getText();
             String studentID = studentIDTextField.getText();
-            String borrowDate = borrowDateField.getText();
+            DateModel<?> model = datePicker.getModel();
 
-            if (bookID.isBlank() || studentID.isBlank() || borrowDate.isBlank()) {
+            if (bookID.isBlank() || studentID.isBlank() || !model.isSelected()) {
                 JOptionPane.showMessageDialog(frame, "Some fields are empty");
                 return;
             }
-            LocalDate date = LocalDate.parse(borrowDate);
+            LocalDate date = LocalDate.of(model.getYear(), model.getMonth()+1, model.getDay());
 
             int result = role.borrowBook(studentID, bookID, date);
 
@@ -64,7 +70,8 @@ public class BorrowBook implements Page {
     {
         studentIDTextField.setText("");
         bookIDTextField.setText("");
-        borrowDateField.setText("");
+        LocalDate now = LocalDate.now();
+        datePicker.getModel().setDate(now.getYear(), now.getMonthValue()-1, now.getDayOfMonth());
     }
 
     @Override

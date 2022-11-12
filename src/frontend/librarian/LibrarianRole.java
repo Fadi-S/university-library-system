@@ -39,7 +39,7 @@ public class LibrarianRole implements Page {
 
         logoutButton.addActionListener((e) -> {
             role.logout();
-
+            JOptionPane.showMessageDialog(frame,"All data has been saved");
             Navigator.back();
         });
         logoutButton.setUI(new BasicButtonUI());
