@@ -1,8 +1,7 @@
 package frontend;
 
 import backend.library.database.LibrarianRole;
-import backend.library.utils.StudentBook;
-import frontend.Page;
+import backend.library.StudentBook;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTableUI;

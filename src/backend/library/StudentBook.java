@@ -1,4 +1,4 @@
-package backend.library.utils;
+package backend.library;
 
 import backend.library.database.Item;
 

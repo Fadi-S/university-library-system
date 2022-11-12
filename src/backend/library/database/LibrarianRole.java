@@ -1,10 +1,7 @@
 package backend.library.database;
 
-import backend.library.database.BookDatabase;
-import backend.library.database.FileDatabase;
-import backend.library.database.StudentBookDatabase;
-import backend.library.utils.Book;
-import backend.library.utils.StudentBook;
+import backend.library.Book;
+import backend.library.StudentBook;
 import constant.FileNames;
 
 import java.time.LocalDate;

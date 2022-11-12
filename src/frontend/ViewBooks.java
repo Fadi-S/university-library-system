@@ -1,6 +1,6 @@
 package frontend;
 
-import backend.library.utils.Book;
+import backend.library.Book;
 import backend.library.database.LibrarianRole;
 
 import javax.swing.*;

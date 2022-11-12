@@ -1,7 +1,7 @@
 package frontend;
 
 import backend.library.database.AdminRole;
-import backend.library.users.LibrarianUser;
+import backend.library.LibrarianUser;
 
 import javax.swing.*;
 

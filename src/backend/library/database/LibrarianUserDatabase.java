@@ -1,6 +1,6 @@
 package backend.library.database;
 
-import backend.library.users.LibrarianUser;
+import backend.library.LibrarianUser;
 
 class LibrarianUserDatabase extends FileDatabase {
     LibrarianUserDatabase(String filename) {

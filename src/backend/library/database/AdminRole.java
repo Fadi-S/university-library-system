@@ -1,5 +1,5 @@
 package backend.library.database;
-import backend.library.users.LibrarianUser;
+import backend.library.LibrarianUser;
 import constant.FileNames;
 
 public class AdminRole implements FileNames {

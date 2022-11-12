@@ -1,6 +1,6 @@
 package backend.library.database;
 
-import backend.library.utils.Book;
+import backend.library.Book;
 
 class BookDatabase extends FileDatabase {
     BookDatabase(String filename) {
