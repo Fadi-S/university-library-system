@@ -9,6 +9,6 @@ class LibrarianUserDatabase extends FileDatabase {
 
     @Override
     public LibrarianUser createRecordFrom(String line) {
-        return LibrarianUser.deserialize(line);
+        return LibrarianUser.createFromString(line);
     }
 }

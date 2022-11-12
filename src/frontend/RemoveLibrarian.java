@@ -1,7 +1,7 @@
 package frontend;
 
 import backend.library.database.AdminRole;
-import backend.library.database.Savable;
+import backend.library.database.Item;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -33,9 +33,9 @@ public class RemoveLibrarian extends JFrame implements Page {
         });
     }
 
-    private boolean sameId(Savable[] items, String id) {
-        for (Savable savable : items) {
-            if (id.equals(savable.getSearchKey()))
+    private boolean sameId(Item[] items, String id) {
+        for (Item item : items) {
+            if (id.equals(item.getSearchKey()))
                 return true;
         }
         return false;

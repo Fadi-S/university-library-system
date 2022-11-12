@@ -9,6 +9,6 @@ class StudentBookDatabase extends FileDatabase {
 
     @Override
     public StudentBook createRecordFrom(String line) {
-        return StudentBook.deserialize(line);
+        return StudentBook.createFromString(line);
     }
 }

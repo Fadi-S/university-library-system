@@ -8,7 +8,7 @@ class BookDatabase extends FileDatabase {
     }
 
     @Override
-    public Savable createRecordFrom(String line) {
-        return Book.deserialize(line);
+    public Item createRecordFrom(String line) {
+        return Book.createFromString(line);
     }
 }

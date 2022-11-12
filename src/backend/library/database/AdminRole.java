@@ -12,7 +12,7 @@ public class AdminRole implements FileNames {
     }
     public void addLibrarian(String librarianId, String name, String email, String address, String phoneNumber)
     {
-        database.addRecordToFile(new LibrarianUser(librarianId, name, email, address, phoneNumber));
+        database.insertRecord(new LibrarianUser(librarianId, name, email, address, phoneNumber));
     }
 
     public void removeLibrarian(String key) {

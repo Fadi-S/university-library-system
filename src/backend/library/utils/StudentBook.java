@@ -1,11 +1,11 @@
 package backend.library.utils;
 
-import backend.library.database.Savable;
+import backend.library.database.Item;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class StudentBook implements Savable {
+public class StudentBook implements Item {
 
     public String getStudentId() {
         return studentId;
@@ -49,15 +49,11 @@ public class StudentBook implements Savable {
     }
 
     @Override
-    public String serialize() {
-        return lineRepresentation();
-    }
-
     public String lineRepresentation() {
         return getStudentId() + "," + getBookId() + "," + getBorrowDate().format(DateTimeFormatter.ISO_DATE);
     }
 
-    public static StudentBook deserialize(String line)
+    public static StudentBook createFromString(String line)
     {
         String[] data = line.split(",");
 

@@ -21,7 +21,7 @@ public class LibrarianRole implements FileNames {
     }
 
     public void addBook(String id, String title, String authorName, String publisherName, int quantity) {
-        booksDatabase.addRecordToFile(new Book(id, title, authorName, publisherName, quantity));
+        booksDatabase.insertRecord(new Book(id, title, authorName, publisherName, quantity));
     }
 
     public int borrowBook(String studentId, String bookId, LocalDate borrowDate)
@@ -37,7 +37,7 @@ public class LibrarianRole implements FileNames {
             return 1;
         }
 
-        sBDatabase.addRecordToFile(studentBook);
+        sBDatabase.insertRecord(studentBook);
 
         book.decrement();
         booksDatabase.insertRecord(book);
@@ -60,7 +60,7 @@ public class LibrarianRole implements FileNames {
         sBDatabase.deleteRecord(studentBook.getSearchKey());
 
         book.increment();
-        booksDatabase.addRecordToFile(book);
+        booksDatabase.insertRecord(book);
 
         return lateFee;
     }

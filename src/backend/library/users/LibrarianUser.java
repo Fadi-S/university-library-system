@@ -1,8 +1,8 @@
 package backend.library.users;
 
-import backend.library.database.Savable;
+import backend.library.database.Item;
 
-public class LibrarianUser implements Savable {
+public class LibrarianUser implements Item {
     public LibrarianUser(String id, String name, String email, String address, String phoneNumber) {
         this.setId(id);
         this.setName(name);
@@ -49,21 +49,16 @@ public class LibrarianUser implements Savable {
     }
 
     @Override
-    public String serialize() {
+    public String lineRepresentation() {
         return this.getId() + "," + this.getName() + "," + this.getEmail() + "," + this.getAddress() + "," + this.getPhoneNumber();
-    }
-
-    public String lineRepresentation()
-    {
-        return serialize();
     }
 
     public void print()
     {
-        System.out.println(serialize());
+        System.out.println(this.lineRepresentation());
     }
 
-    public static LibrarianUser deserialize(String line)
+    public static LibrarianUser createFromString(String line)
     {
         String[] data = line.split(",");
 

@@ -1,7 +1,7 @@
 package backend.library.database;
 
-public interface Savable {
+public interface Item {
     String getSearchKey();
 
-    String serialize();
+    String lineRepresentation();
 }

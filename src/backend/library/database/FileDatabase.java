@@ -5,18 +5,17 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
-abstract class FileDatabase implements Database {
+abstract class FileDatabase {
     private final String filname;
-    private ArrayList<Savable> records;
+    private ArrayList<Item> records;
 
     FileDatabase(String filename) {
         this.filname = filename;
         readFromFile();
     }
 
-    abstract public Savable createRecordFrom(String line);
+    abstract public Item createRecordFrom(String line);
 
-    @Override
     public void readFromFile() {
         records = new ArrayList<>();
 
@@ -34,51 +33,39 @@ abstract class FileDatabase implements Database {
         scanner.close();
     }
 
-    @Override
-    public ArrayList<Savable> returnAllRecords() {
+    public ArrayList<Item> returnAllRecords() {
         return records;
     }
 
-    @Override
     public boolean contains(String key) {
         return getRecord(key) != null;
     }
 
-    @Override
-    public Savable getRecord(String key) {
-        Optional<Savable> optionalSavable = records.stream().filter(
+    public Item getRecord(String key) {
+        Optional<Item> optionalSavable = records.stream().filter(
                 savable -> savable.getSearchKey().equalsIgnoreCase(key)
         ).findFirst();
 
         return optionalSavable.orElse(null);
     }
 
-    @Override
-    public void insertRecord(Savable record) {
+    public void insertRecord(Item record) {
         deleteRecord(record.getSearchKey());
 
         records.add(record);
     }
 
-    public void addRecordToFile(Savable record) {
-        insertRecord(record);
-    }
-
-    @Override
     public void deleteRecord(String key) {
         records.removeIf((savable) -> savable.getSearchKey().equalsIgnoreCase(key));
     }
 
-    @Override
     public void saveToFile() {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(getFile()));
-            for (Savable savable : records) {
-                writer.write(savable.serialize());
-                writer.newLine();
+            for (Item item : records) {
+                writer.write(item.lineRepresentation() + "\n");
             }
 
-            writer.flush();
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -89,9 +76,7 @@ abstract class FileDatabase implements Database {
     {
         try {
             File file = new File(this.filname);
-
             file.createNewFile();
-
             return file;
         }catch (IOException e) {
             throw new RuntimeException(e);

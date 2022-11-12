@@ -1,8 +1,8 @@
 package backend.library.utils;
 
-import backend.library.database.Savable;
+import backend.library.database.Item;
 
-public class Book implements Savable {
+public class Book implements Item {
     public String getBookId() {
         return bookId;
     }
@@ -49,11 +49,6 @@ public class Book implements Savable {
         return getBookId();
     }
 
-    @Override
-    public String serialize() {
-        return lineRepresentation();
-    }
-
     public Book(String id, String title, String authorName, String publisherName, int quantity) {
         setBookId(id);
         setTitle(title);
@@ -77,11 +72,12 @@ public class Book implements Savable {
         setQuantity(getQuantity() + 1);
     }
 
+    @Override
     public String lineRepresentation() {
         return getBookId() + "," + getTitle() + "," + getAuthorName() + "," + getPublisherName() + "," + getQuantity();
     }
 
-    public static Book deserialize(String line)
+    public static Book createFromString(String line)
     {
         String[] data = line.split(",");
 
